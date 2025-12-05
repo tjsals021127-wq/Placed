@@ -1,0 +1,27 @@
+.review-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.review-list {
+  list-style: none;
+  padding: 0;
+}
+
+.review-item {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.rating {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.empty {
+  color: #555;
+  margin-top: 20px;
+}

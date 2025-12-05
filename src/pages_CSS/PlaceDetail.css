@@ -1,0 +1,27 @@
+.place-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.place-info img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.review-list {
+  list-style: none;
+  padding: 0;
+}
+
+.review-item {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.write-review textarea {
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+}

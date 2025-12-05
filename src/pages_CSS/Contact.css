@@ -1,0 +1,148 @@
+/* 페이지 전체 래퍼 */
+.contact-page {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+
+  /* 헤더/푸터 안 가리도록만 최소 설정 */
+  min-height: auto;
+  height: auto;
+  display: block;
+}
+
+/* ✅ 페이지 자체 헤더 (Contact.js 안의 header) */
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 60px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.logo-img {
+  width: 42px;
+  height: auto;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.nav button {
+  border: none;
+  background: none;
+  margin-left: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav button:hover {
+  color: #2a7fff;
+}
+
+.nav .logout {
+  background-color: #2a7fff;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: background-color 0.2s ease;
+}
+
+.nav .logout:hover {
+  background-color: #1b63e0;
+}
+
+/* 문의 섹션 영역 */
+.contact-section {
+  text-align: center;
+  padding: 120px 20px 80px;
+  animation: fadeIn 0.8s ease;
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  color: #2a7fff;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* 문의 폼 */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-form select,
+.contact-form textarea {
+  width: 360px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  padding: 12px;
+}
+
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: #2a7fff;
+  box-shadow: 0 0 0 2px rgba(42, 127, 255, 0.2);
+}
+
+.contact-form textarea {
+  height: 160px;
+  resize: none;
+}
+
+.contact-form button {
+  background-color: #2a7fff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.contact-form button:hover {
+  background-color: #1b63e0;
+}
+
+/* 푸터 (Contact.js 안의 footer) */
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #fff;
+  color: #666;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

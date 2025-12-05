@@ -1,0 +1,101 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ffffff, #f2f6ff);
+}
+
+.signup-box {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 360px;
+}
+
+.signup-box h1 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 1.8em;
+}
+
+.signup-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ✅ 이메일 + 중복확인 버튼 가로 정렬 */
+.email-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.email-check input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.check-btn {
+  white-space: nowrap; /* 줄바꿈 방지 */
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.check-btn:hover {
+  background-color: #333;
+}
+
+.signup-box input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ✅ 비밀번호 입력과 확인 사이 간격 줄이기 */
+.signup-box input[type="password"] + input[type="password"] {
+  margin-top: -11px; 
+}
+
+.signup-box button {
+  background: #0078ff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.6s ease;
+}
+
+.signup-box button:hover {
+ background-color: #005fd1;
+}
+
+.login-link {
+  margin-top: 20px;
+  color: #555;
+  font-size: 0.95em;
+}
+
+.login-link span {
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
