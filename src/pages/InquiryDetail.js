@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getInquiryDetail } from "../api/inquiryAPI";   // ⭐ API
+import { getInquiryDetail } from "../api/inquiryAPI";   
 import "../pages_CSS/InquiryDetail.css";
 
 function InquiryDetail() {
@@ -9,14 +9,14 @@ function InquiryDetail() {
   const [inquiry, setInquiry] = useState(null);
 
   useEffect(() => {
-    getInquiryDetail(id)       // ⭐ axios → API
+    getInquiryDetail(id)    
       .then((res) => setInquiry(res.data))
       .catch(() => alert("문의 상세를 불러오지 못했습니다."));
   }, [id]);
 
   return (
     <div className="detail-page">
-      {/* Header */}
+    
       <header className="user-header">
         <div className="logo" onClick={() => navigate("/main")}>
           <img src="/placed_logo.png" alt="PLACED Logo" className="logo-img" />
@@ -29,7 +29,7 @@ function InquiryDetail() {
         </nav>
       </header>
 
-      {/* Body */}
+   
       <section className="detail-section">
         <h2>문의 상세보기</h2>
 
@@ -49,7 +49,7 @@ function InquiryDetail() {
         )}
       </section>
 
-      {/* Footer */}
+     
       <footer className="footer">
         © 2025 PLACED | <a href="#">이용약관</a> |{" "}
         <a href="#">개인정보처리방침</a>

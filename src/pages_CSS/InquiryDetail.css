@@ -1,6 +1,4 @@
-/* InquiryDetail.css */
 
-/* 전체 페이지 */
 .detail-page {
   min-height: 100vh;
   background-color: #f8f9fa;
@@ -8,7 +6,7 @@
   flex-direction: column;
 }
 
-/* 페이지 내부 */
+
 .detail-section {
   width: 90%;
   max-width: 800px;
@@ -25,7 +23,7 @@
   font-size: 26px;
 }
 
-/* 상세 내용 박스 */
+
 .detail-box {
   background: #fff;
   border-radius: 10px;
@@ -54,7 +52,7 @@
   margin-top: 10px;
 }
 
-/* 뒤로가기 버튼 */
+
 .back-btn {
   margin-top: 25px;
   width: 100%;
@@ -72,7 +70,7 @@
   background: #50142f;
 }
 
-/* 에러 메시지 */
+
 .error {
   color: red;
   font-weight: 500;

@@ -7,7 +7,7 @@ function MainGuest() {
 
   return (
     <div className="guest-page">
-      {/* ✅ 헤더 */}
+     
       <header className="guest-header">
         <div className="logo" onClick={() => navigate("/")}>
           <img src="/placed_logo.png" alt="PLACED Logo" className="logo-img" />
@@ -24,7 +24,7 @@ function MainGuest() {
         </nav>
       </header>
 
-      {/* ✅ Hero 영역 */}
+     
       <section className="hero">
         <div className="hero-content">
           <h1>광고 없는 진짜 리뷰,<br />이제 진짜만 보세요.</h1>
@@ -39,7 +39,7 @@ function MainGuest() {
         </div>
       </section>
 
-      {/* ✅ 기능 소개 */}
+      
       <section className="features">
         <h2>PLACED의 주요 기능</h2>
         <div className="feature-list">
@@ -61,7 +61,7 @@ function MainGuest() {
         </div>
       </section>
 
-      {/* ✅ 인기 공간 */}
+     
       <section className="recommend">
         <h2>지금 인기 있는 공간</h2>
         <div className="card-list">
@@ -80,7 +80,7 @@ function MainGuest() {
         </div>
       </section>
 
-      {/* ✅ 푸터 */}
+     
       <footer className="guest-footer">
         © 2025 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
       </footer>

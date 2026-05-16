@@ -13,7 +13,7 @@
   background: linear-gradient(to bottom right, #ffffff, #f2f6ff);
 }
 
-/* 로그인 박스 */
+
 .login-box {
   background-color: white;
   padding: 45px 55px;
@@ -36,7 +36,7 @@
   letter-spacing: 1px;
 }
 
-/* 입력창 */
+
 .login-box input {
   width: 100%;
   padding: 12px 14px;
@@ -45,12 +45,12 @@
   border-radius: 10px;
   font-size: 15px;
   transition: 0.2s ease;
-  color: #000; /* ✅ 입력 글씨 보이게 */
+  color: #000; 
   background-color: #fff;
 }
 
 .login-box input::placeholder {
-  color: #aaa; /* ✅ placeholder 살짝 흐리게 */
+  color: #aaa; 
 }
 
 .login-box input:focus {
@@ -59,7 +59,7 @@
   outline: none;
 }
 
-/* 버튼 */
+
 .login-box button {
   width: 100%;
   padding: 12px;
@@ -70,14 +70,14 @@
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.6s ease; /* ✅ hover 변환 부드럽게 */
+  transition: background-color 0.6s ease;
 }
 
 .login-box button:hover {
   background-color: #005fd1;
 }
 
-/* 회원가입 링크 */
+
 .signup-link {
   margin-top: 18px;
   font-size: 14px;

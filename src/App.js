@@ -7,20 +7,22 @@ import MainUser from "./pages/MainUser";
 import Contact from "./pages/Contact";
 import MyInquiry from "./pages/MyInquiry";
 import SearchResults from "./pages/SearchResults";
-import InquiryDetail from "./pages/InquiryDetail";   
+import InquiryDetail from "./pages/InquiryDetail";
 import PlaceDetail from "./pages/PlaceDetail";
 import MyReviews from "./pages/MyReviews";
+import MyPlaces from "./pages/MyPlaces";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
     <Router>
-    
-
       <Routes>
         <Route path="/" element={<MainGuest />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/main" element={<MainUser />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/my-places" element={<MyPlaces />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/inquiries" element={<MyInquiry />} />
         <Route path="/search" element={<SearchResults />} />
@@ -28,8 +30,6 @@ function App() {
         <Route path="/place/:id" element={<PlaceDetail />} />
         <Route path="/reviews" element={<MyReviews />} />
       </Routes>
-
-
     </Router>
   );
 }

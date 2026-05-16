@@ -1,7 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../config";
 
-// ⭐ 공통 axios 인스턴스
 const API = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -9,7 +8,7 @@ const API = axios.create({
   },
 });
 
-// ⭐ 요청마다 자동 Authorization 헤더 추가 (토큰 있을 경우)
+// 로그인 토큰 있으면 모든 요청에 자동으로 헤더 붙여줌
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {

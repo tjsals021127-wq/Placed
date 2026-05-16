@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-/* ✅ 헤더 */
+
 .guest-header {
   display: flex;
   justify-content: space-between;
@@ -38,7 +38,7 @@
   color: #333;
 }
 
-/* 로그인 / 회원가입 버튼 */
+
 .nav-btn {
   border: none;
   background: none;
@@ -66,7 +66,7 @@
   background-color: #1b63e0;
 }
 
-/* ✅ Hero 영역 */
+
 .hero {
   height: 75vh;
   background: linear-gradient(to bottom right, #2a7fff, #1869e3);
@@ -107,7 +107,7 @@
   transform: scale(1.05);
 }
 
-/* ✅ 기능 섹션 */
+
 .features {
   padding: 80px 60px;
   text-align: center;
@@ -154,7 +154,7 @@
   font-size: 0.95rem;
 }
 
-/* ✅ 인기 공간 */
+
 .recommend {
   text-align: center;
   padding: 80px 60px;
@@ -197,7 +197,7 @@
   color: #333;
 }
 
-/* ✅ 푸터 */
+
 .guest-footer {
   text-align: center;
   padding: 20px 0;
@@ -207,7 +207,7 @@
   border-top: 1px solid #eee;
 }
 
-/* ✅ 애니메이션 */
+
 @keyframes fadeIn {
   from {
     opacity: 0;

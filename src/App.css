@@ -1,9 +1,9 @@
-/* 기본 App 스타일 */
+
 .App {
   text-align: center;
 }
 
-/* 로고 애니메이션 유지 */
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -15,7 +15,7 @@
   }
 }
 
-/* 🔥 문제되는 .App-header 삭제됨 */
+
 .App-header {
   background: none;
   min-height: auto;
@@ -27,12 +27,12 @@
   color: inherit;
 }
 
-/* 링크 색 */
+
 .App-link {
   color: #61dafb;
 }
 
-/* 로고 회전 애니메이션 */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

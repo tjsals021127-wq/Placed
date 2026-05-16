@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createInquiry } from "../api/inquiryAPI";  // ⭐ API 함수 호출
+import { createInquiry } from "../api/inquiryAPI";
 import "../pages_CSS/Contact.css";
 
 function Contact() {
@@ -23,7 +23,7 @@ function Contact() {
     }
 
     try {
-      await createInquiry(category, message); // ⭐ axios 대신 API 함수 호출!
+      await createInquiry(category, message);
 
       alert("문의가 정상적으로 접수되었습니다!");
       setCategory("문의 선택");
@@ -37,7 +37,7 @@ function Contact() {
 
   return (
     <div className="contact-page">
-      {/* Header */}
+     
       <header className="user-header">
         <div className="logo" onClick={() => navigate("/main")}>
           <img src="/placed_logo.png" alt="PLACED Logo" className="logo-img" />
@@ -52,7 +52,7 @@ function Contact() {
         </nav>
       </header>
 
-      {/* Body */}
+     
       <section className="contact-section">
         <h2>문의하기</h2>
         <p>서비스 이용 중 불편사항이나 제안이 있다면 알려주세요</p>
@@ -76,7 +76,7 @@ function Contact() {
         </form>
       </section>
 
-      {/* Footer */}
+   
       <footer className="footer">
         © 2025 PLACED | <a href="#">이용약관</a> |{" "}
         <a href="#">개인정보처리방침</a>

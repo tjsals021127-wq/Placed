@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api/userAPI";  
+// import { loginUser } from "../api/userAPI"; // 백엔드 연결 시 주석 해제
 import "../pages_CSS/Login.css";
+
+// ✅ 더미 계정 (백엔드 연결 시 삭제)
+const DUMMY_USERS = [
+  { id: "user1", password: "1234" },
+];
 
 function Login() {
   const navigate = useNavigate();
@@ -11,14 +16,26 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await loginUser(id, password);  
-      localStorage.setItem("token", res.data.token);
+    // 백엔드 연결 시 아래 더미 블록 삭제하고 주석 해제
+    // try {
+    //   const res = await loginUser(id, password);
+    //   localStorage.setItem("token", res.data.token);
+    //   alert("로그인 성공!");
+    //   navigate("/main");
+    // } catch (err) {
+    //   console.error(err);
+    //   alert("아이디 또는 비밀번호가 잘못되었습니다.");
+    // }
+
+    // ✅ 더미 로그인 (백엔드 연결 시 삭제)
+    const user = DUMMY_USERS.find(
+      (u) => u.id === id && u.password === password
+    );
+    if (user) {
+      localStorage.setItem("token", "dummy-token");
       alert("로그인 성공!");
       navigate("/main");
-
-    } catch (err) {
-      console.error(err);
+    } else {
       alert("아이디 또는 비밀번호가 잘못되었습니다.");
     }
   };
@@ -36,7 +53,6 @@ function Login() {
             onChange={(e) => setId(e.target.value)}
             required
           />
-
           <input
             type="password"
             placeholder="비밀번호를 입력하세요"
@@ -44,7 +60,6 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
           <button type="submit">로그인</button>
         </form>
 

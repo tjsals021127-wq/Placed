@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getMyInquiries } from "../api/inquiryAPI";   // ⭐ API 함수
+import { getMyInquiries } from "../api/inquiryAPI";   
 import "../pages_CSS/MyInquiry.css";
 
 function MyInquiry() {
@@ -10,7 +10,7 @@ function MyInquiry() {
   const [error, setError] = useState(null);       
 
   useEffect(() => {
-    getMyInquiries()                     // ⭐ axios 직접 사용 → API로 변경
+    getMyInquiries()
       .then((res) => {
         setInquiries(res.data);
       })
@@ -23,7 +23,7 @@ function MyInquiry() {
 
   return (
     <div className="inquiry-page">
-      {/* Header */}
+     
       <header className="user-header">
         <div className="logo" onClick={() => navigate("/main")}>
           <img src="/placed_logo.png" alt="PLACED Logo" className="logo-img" />
@@ -36,7 +36,7 @@ function MyInquiry() {
         </nav>
       </header>
 
-      {/* Body */}
+     
       <section className="inquiry-section">
         <h2>내 문의내역</h2>
 
@@ -68,7 +68,7 @@ function MyInquiry() {
         </button>
       </section>
 
-      {/* Footer */}
+    
       <footer className="footer">
         © 2025 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
       </footer>
