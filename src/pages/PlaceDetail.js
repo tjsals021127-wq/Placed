@@ -17,6 +17,7 @@ function PlaceDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // 임시 더미데이터 — 백엔드 연결 시 getPlaceDetail(id), getReviewsByPlace(id) 호출로 교체
     setTimeout(() => {
       setPlaceData({
         name: "가게 A",

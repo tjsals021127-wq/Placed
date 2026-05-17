@@ -64,11 +64,10 @@ function RadiusModal({ distance, setDistance, onClose }) {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // 반경 변경 시 원 크기 + 줌 레벨 업데이트
   useEffect(() => {
     try {
       if (circleInstance.current) {
-        const d = parseFloat(distance); // range input은 문자열로 오기 때문에 변환 필요
+        const d = parseFloat(distance);
         circleInstance.current.setRadius(d * 1000);
         if (mapInstance.current) {
           mapInstance.current.setLevel(getZoomLevel(d));
@@ -77,7 +76,6 @@ function RadiusModal({ distance, setDistance, onClose }) {
     } catch (e) {}
   }, [distance]);
 
-  // 거리(km) → 카카오맵 줌 레벨 변환
   const getZoomLevel = (d) => {
     if (d <= 0.5) return 4;
     if (d <= 1)   return 5;
@@ -98,13 +96,13 @@ function RadiusModal({ distance, setDistance, onClose }) {
     >
       <div
         className="modal-content"
-        style={{ background: "white", padding: "30px", borderRadius: "20px", width: "700px" }}
+        style={{ background: "white", padding: "30px", borderRadius: "20px", width: "900px" }}
       >
         <h3 style={{ marginBottom: "20px", fontWeight: "bold" }}>📍 검색 반경 설정</h3>
         <div style={{ display: "flex", gap: "20px" }}>
           <div
             ref={mapRef}
-            style={{ flex: 1.5, height: "350px", borderRadius: "12px", background: "#eee" }}
+            style={{ flex: 1.5, height: "450px", borderRadius: "12px", background: "#eee" }}
           ></div>
           <div
             style={{
@@ -220,6 +218,10 @@ function MainUser() {
           ))}
         </div>
       </section>
+
+      <footer style={{ textAlign: "center", padding: "24px", color: "#aaa", fontSize: "0.85rem", borderTop: "1px solid #eef0f3" }}>
+        © 2026 PLACED | <a href="#" style={{ color: "#aaa", textDecoration: "none" }}>이용약관</a> | <a href="#" style={{ color: "#aaa", textDecoration: "none" }}>개인정보처리방침</a>
+      </footer>
     </div>
   );
 }

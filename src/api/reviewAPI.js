@@ -13,7 +13,7 @@ export const createReview = (placeId, content, rating) =>
 export const getMyReviews = () =>
   API.get(API_ROUTES.MY_REVIEWS);
 
-// 백엔드 연결 시 사용
+// 아래 두 함수는 MyReviews.js에서 현재 더미로 대체 중 — 백엔드 연결 시 import 주석 해제하면 바로 사용 가능
 export const updateReview = (id, content, rating) =>
   API.patch(`/api/reviews/${id}/`, { content, rating });
 

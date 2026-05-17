@@ -5,9 +5,9 @@ import "../pages_CSS/MyInquiry.css";
 
 function MyInquiry() {
   const navigate = useNavigate();
-  const [inquiries, setInquiries] = useState([]); 
-  const [loading, setLoading] = useState(true);   
-  const [error, setError] = useState(null);       
+  const [inquiries, setInquiries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getMyInquiries()
@@ -53,7 +53,7 @@ function MyInquiry() {
               <li 
                 key={item.id} 
                 className="inquiry-item"
-                onClick={() => navigate(`/inquiries/${item.id}`)}
+                onClick={() => navigate(`/inquiry/${item.id}`)}
               >
                 <p><strong>유형:</strong> {item.category}</p>
                 <p><strong>내용:</strong> {item.message}</p>

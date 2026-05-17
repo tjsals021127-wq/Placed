@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createInquiry } from "../api/inquiryAPI";
+import Header from "../components/Header";
 import "../pages_CSS/Contact.css";
 
 function Contact() {
   const navigate = useNavigate();
   const [category, setCategory] = useState("문의 선택");
   const [message, setMessage] = useState("");
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    alert("로그아웃 되었습니다.");
-    navigate("/");
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,11 +19,9 @@ function Contact() {
 
     try {
       await createInquiry(category, message);
-
       alert("문의가 정상적으로 접수되었습니다!");
       setCategory("문의 선택");
       setMessage("");
-
     } catch (error) {
       console.error(error);
       alert("문의 접수 중 오류가 발생했습니다.");
@@ -37,22 +30,8 @@ function Contact() {
 
   return (
     <div className="contact-page">
-     
-      <header className="user-header">
-        <div className="logo" onClick={() => navigate("/main")}>
-          <img src="/placed_logo.png" alt="PLACED Logo" className="logo-img" />
-          <span className="logo-text">PLACED</span>
-        </div>
+      <Header />
 
-        <nav className="nav">
-          <button onClick={() => navigate("/main")}>홈</button>
-          <button onClick={() => alert("내 리뷰 페이지 준비 중!")}>내 리뷰</button>
-          <button onClick={() => navigate("/inquiries")}>문의하기</button>
-          <button className="logout" onClick={handleLogout}>로그아웃</button>
-        </nav>
-      </header>
-
-     
       <section className="contact-section">
         <h2>문의하기</h2>
         <p>서비스 이용 중 불편사항이나 제안이 있다면 알려주세요</p>
@@ -76,10 +55,8 @@ function Contact() {
         </form>
       </section>
 
-   
       <footer className="footer">
-        © 2025 PLACED | <a href="#">이용약관</a> |{" "}
-        <a href="#">개인정보처리방침</a>
+        © 2026 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
       </footer>
     </div>
   );

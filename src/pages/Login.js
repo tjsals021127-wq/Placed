@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import { loginUser } from "../api/userAPI"; // 백엔드 연결 시 주석 해제
 import "../pages_CSS/Login.css";
 
-// ✅ 더미 계정 (백엔드 연결 시 삭제)
+// 임시 더미 계정
 const DUMMY_USERS = [
   { id: "user1", password: "1234" },
 ];
@@ -27,7 +27,6 @@ function Login() {
     //   alert("아이디 또는 비밀번호가 잘못되었습니다.");
     // }
 
-    // ✅ 더미 로그인 (백엔드 연결 시 삭제)
     const user = DUMMY_USERS.find(
       (u) => u.id === id && u.password === password
     );
