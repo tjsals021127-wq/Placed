@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { loginUser } from "../api/userAPI"; // 백엔드 연결 시 주석 해제
+import { loginUser } from "../api/userAPI";
 import "../pages_CSS/Login.css";
 
 // 임시 더미 계정
-const DUMMY_USERS = [
-  { id: "user1", password: "1234" },
-];
+// const DUMMY_USERS = [
+//   { id: "user1", password: "1234" },
+// ];
 
 function Login() {
   const navigate = useNavigate();
@@ -15,28 +15,27 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // 백엔드 연결 시 아래 더미 블록 삭제하고 주석 해제
-    // try {
-    //   const res = await loginUser(id, password);
-    //   localStorage.setItem("token", res.data.token);
-    //   alert("로그인 성공!");
-    //   navigate("/main");
-    // } catch (err) {
-    //   console.error(err);
-    //   alert("아이디 또는 비밀번호가 잘못되었습니다.");
-    // }
-
-    const user = DUMMY_USERS.find(
-      (u) => u.id === id && u.password === password
-    );
-    if (user) {
-      localStorage.setItem("token", "dummy-token");
+    try {
+      const res = await loginUser(id, password);
+      localStorage.setItem("token", res.data.token);
       alert("로그인 성공!");
       navigate("/main");
-    } else {
+    } catch (err) {
+      console.error(err);
       alert("아이디 또는 비밀번호가 잘못되었습니다.");
     }
+
+    // 더미 로그인 (백엔드 연결 끊길 시 주석 해제)
+    // const user = DUMMY_USERS.find(
+    //   (u) => u.id === id && u.password === password
+    // );
+    // if (user) {
+    //   localStorage.setItem("token", "dummy-token");
+    //   alert("로그인 성공!");
+    //   navigate("/main");
+    // } else {
+    //   alert("아이디 또는 비밀번호가 잘못되었습니다.");
+    // }
   };
 
   return (

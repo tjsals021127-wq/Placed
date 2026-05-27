@@ -15,9 +15,9 @@ function Signup() {
     if (!id.trim()) return alert("아이디를 입력하세요!");
     try {
       const res = await checkDuplicateId(id);  
-      res.data.exists
-        ? alert("이미 사용 중인 아이디입니다.")
-        : alert("사용 가능한 아이디입니다!");
+      res.data.isAvailable
+        ? alert("사용 가능한 아이디입니다!")
+        : alert("이미 사용 중인 아이디입니다.");
     } catch (err) {
       console.error(err);
       alert("중복확인 중 오류가 발생했습니다.");

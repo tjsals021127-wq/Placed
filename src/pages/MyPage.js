@@ -40,7 +40,10 @@ function MyPage() {
             <button className="menu-btn" onClick={() => navigate("/my-places")}>내 장소</button>
             <button className="menu-btn" onClick={() => navigate("/contact")}>문의하기</button>
             <div className="sidebar-divider"></div>
-            <button className="menu-btn logout-btn" onClick={() => navigate("/")}>
+            <button className="menu-btn logout-btn" onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/");
+            }}>
               로그아웃
             </button>
           </nav>
