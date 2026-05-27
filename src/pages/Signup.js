@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupUser, checkDuplicateId } from "../api/userAPI";
+import Footer from "../components/Footer";
 import "../pages_CSS/Signup.css";
 
 function Signup() {
@@ -41,8 +42,9 @@ function Signup() {
   };
 
   return (
-    <div className="signup-page">
-      <div className="signup-card">
+    <>
+      <div className="signup-page">
+        <div className="signup-card">
         <h1 className="placed-logo">PLACED</h1>
 
         <form onSubmit={handleSubmit}>
@@ -102,8 +104,10 @@ function Signup() {
           이미 계정이 있으신가요?{" "}
           <span onClick={() => navigate("/login")}>로그인</span>
         </p>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

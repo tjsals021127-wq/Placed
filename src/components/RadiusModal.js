@@ -40,7 +40,6 @@ function RadiusModal({ distance, setDistance, onClose }) {
           });
           circleRef.current = circle;
 
-          // 내 위치 마커 표시
           new window.kakao.maps.Marker({
             map: map,
             position: center,
@@ -57,7 +56,6 @@ function RadiusModal({ distance, setDistance, onClose }) {
     };
 
     const loadMap = () => {
-      // 내 위치 가져오기
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (pos) => {
@@ -66,9 +64,9 @@ function RadiusModal({ distance, setDistance, onClose }) {
             initMap(lat, lng);
           },
           () => {
-            // 위치 권한 거부 시 기본 위치(대전) 사용
             initMap(36.4523, 127.4258);
-          }
+          },
+          { timeout: 10000, enableHighAccuracy: true }
         );
       } else {
         initMap(36.4523, 127.4258);
@@ -105,8 +103,7 @@ function RadiusModal({ distance, setDistance, onClose }) {
     if (d <= 1)   return 6;
     if (d <= 2)   return 7;
     if (d <= 3)   return 8;
-    if (d <= 4)   return 9;
-    return 10;
+    return 9;
   };
 
   return (
@@ -156,7 +153,7 @@ function RadiusModal({ distance, setDistance, onClose }) {
               설정 거리: <strong style={{ fontSize: "20px" }}>{distance}km</strong>
             </p>
             <input
-              type="range" min="0.5" max="5" step="0.5"
+              type="range" min="0.1" max="2.5" step="0.1"
               value={distance}
               onChange={(e) => setDistance(e.target.value)}
               style={{ width: "100%" }}

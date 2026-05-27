@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/userAPI";
+import Footer from "../components/Footer";
 import "../pages_CSS/Login.css";
 
 // 임시 더미 계정
@@ -39,8 +40,9 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
+    <>
+      <div className="login-container">
+        <div className="login-box">
         <h1>PLACED 로그인</h1>
 
         <form onSubmit={handleSubmit}>
@@ -65,8 +67,10 @@ function Login() {
           계정이 없으신가요?{" "}
           <span onClick={() => navigate("/signup")}>회원가입</span>
         </p>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

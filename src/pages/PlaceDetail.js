@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../pages_CSS/PlaceDetail.css";
 
 const DUMMY_REVIEWS = [
@@ -10,6 +11,56 @@ const DUMMY_REVIEWS = [
   { id: 4, author: "최**", rating: 5, content: "친구랑 왔는데 대만족! 사진도 잘 나와요 📸", created_at: "2026-05-08" },
 ];
 
+// 백엔드 연결 시 placeData.images 배열로 교체
+const DUMMY_IMAGES = [
+  "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1552566626-52f8b828329c?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=600&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=600&h=400&fit=crop",
+];
+
+function ImageSlider({ images }) {
+  const [current, setCurrent] = useState(0);
+
+  const prev = () => setCurrent((current - 1 + images.length) % images.length);
+  const next = () => setCurrent((current + 1) % images.length);
+
+  return (
+    <div style={{ position: "relative", width: "100%", height: "300px", borderRadius: "12px", overflow: "hidden", background: "#eee" }}>
+      <img
+        src={images[current]}
+        alt={`슬라이드 ${current + 1}`}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+      <button onClick={prev} style={{
+        position: "absolute", left: "10px", top: "50%", transform: "translateY(-50%)",
+        background: "rgba(0,0,0,0.4)", color: "white", border: "none",
+        borderRadius: "50%", width: "36px", height: "36px", cursor: "pointer", fontSize: "18px"
+      }}>‹</button>
+      <button onClick={next} style={{
+        position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)",
+        background: "rgba(0,0,0,0.4)", color: "white", border: "none",
+        borderRadius: "50%", width: "36px", height: "36px", cursor: "pointer", fontSize: "18px"
+      }}>›</button>
+      <div style={{
+        position: "absolute", bottom: "10px", left: "50%", transform: "translateX(-50%)",
+        display: "flex", gap: "6px"
+      }}>
+        {images.map((_, i) => (
+          <div key={i} onClick={() => setCurrent(i)} style={{
+            width: "8px", height: "8px", borderRadius: "50%",
+            background: i === current ? "white" : "rgba(255,255,255,0.5)",
+            cursor: "pointer"
+          }} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function PlaceDetail() {
   const { id } = useParams();
   const [placeData, setPlaceData] = useState(null);
@@ -17,7 +68,17 @@ function PlaceDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 임시 더미데이터 — 백엔드 연결 시 getPlaceDetail(id), getReviewsByPlace(id) 호출로 교체
+    // 백엔드 연결 시 아래 더미 블록 삭제하고 주석 해제
+    // try {
+    //   const placeRes = await getPlaceDetail(id);
+    //   const reviewRes = await getReviewsByPlace(id);
+    //   setPlaceData(placeRes.data);
+    //   setReviews(reviewRes.data);
+    //   setLoading(false);
+    // } catch (err) {
+    //   console.error(err);
+    // }
+
     setTimeout(() => {
       setPlaceData({
         name: "가게 A",
@@ -27,13 +88,14 @@ function PlaceDetail() {
         reviewCount: 152,
         lat: 37.5012,
         lng: 127.0396,
+        images: DUMMY_IMAGES, // 백엔드 연결 시 API 응답의 images 배열로 교체
         analysis: [
           { id: 1, text: "실제 방문자들의 긍정적인 반응이 많습니다.", type: "check" },
           { id: 2, text: "광고성 키워드 비중이 낮아 신뢰할 수 있습니다.", type: "check" },
           { id: 3, text: "최근 리뷰 중 일부 서비스 불만이 감지되었습니다.", type: "warning" },
         ],
       });
-      setReviews(DUMMY_REVIEWS);
+      setReviews(DUMMY_REVIEWS); // 백엔드 연결 시 getReviewsByPlace(id) 호출로 교체
       setLoading(false);
     }, 500);
   }, [id]);
@@ -70,9 +132,7 @@ function PlaceDetail() {
       <Header />
       <main className="detail-container">
         <section className="info-card">
-          <div className="image-placeholder">
-            <span className="img-icon">🖼️</span>
-          </div>
+          <ImageSlider images={placeData.images} />
           <div className="text-info">
             <div className="title-row">
               <h2>{placeData.name}</h2>
@@ -83,7 +143,6 @@ function PlaceDetail() {
             <p className="addr">주소 : {placeData.address}</p>
             <p className="desc">{placeData.description}</p>
 
-            {/* 별점 */}
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6px', marginTop: '16px', flexWrap: 'nowrap' }}>
               {Array.from({ length: 5 }, (_, i) => (
                 <span key={i} style={{ color: i < Math.round(avgRating) ? '#ffc107' : '#ddd', fontSize: '1.1rem', lineHeight: 1 }}>★</span>
@@ -115,9 +174,7 @@ function PlaceDetail() {
         </section>
       </main>
 
-      <footer className="footer">
-        © 2026 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

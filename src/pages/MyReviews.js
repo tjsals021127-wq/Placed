@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { getMyReviews, updateReview, deleteReview } from "../api/reviewAPI"; // 백엔드 연결 시 주석 해제, 아래 더미 블록 삭제
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../pages_CSS/MyReviews.css";
 
 // 임시 더미데이터
@@ -140,9 +141,7 @@ function MyReviews() {
         )}
       </section>
 
-      <footer className="footer">
-        © 2025 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

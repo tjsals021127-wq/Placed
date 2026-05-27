@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getInquiryDetail } from "../api/inquiryAPI";   
+import { getInquiryDetail } from "../api/inquiryAPI";
+import Footer from "../components/Footer";
 import "../pages_CSS/InquiryDetail.css";
 
 function InquiryDetail() {
@@ -50,10 +51,7 @@ function InquiryDetail() {
       </section>
 
      
-      <footer className="footer">
-        © 2025 PLACED | <a href="#">이용약관</a> |{" "}
-        <a href="#">개인정보처리방침</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

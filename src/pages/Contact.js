@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createInquiry } from "../api/inquiryAPI";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../pages_CSS/Contact.css";
 
 function Contact() {
@@ -55,9 +56,7 @@ function Contact() {
         </form>
       </section>
 
-      <footer className="footer">
-        © 2026 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../pages_CSS/MyPage.css";
 
 function MyPage() {
@@ -109,6 +110,7 @@ function MyPage() {
           </form>
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

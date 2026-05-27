@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getMyInquiries } from "../api/inquiryAPI";   
+import { getMyInquiries } from "../api/inquiryAPI";
+import Footer from "../components/Footer";
 import "../pages_CSS/MyInquiry.css";
 
 function MyInquiry() {
@@ -69,9 +70,7 @@ function MyInquiry() {
       </section>
 
     
-      <footer className="footer">
-        © 2025 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

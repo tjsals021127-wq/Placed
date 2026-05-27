@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import "../pages_CSS/MainGuest.css";
 
 function MainGuest() {
@@ -81,9 +82,7 @@ function MainGuest() {
       </section>
 
      
-      <footer className="guest-footer">
-        © 2025 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
-      </footer>
+      <Footer />
     </div>
   );
 }

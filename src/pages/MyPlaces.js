@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import { getMyPlaces, deleteMyPlace } from "../api/placeAPI"; // 백엔드 연결 시 주석 해제
+// import { getMyPlaces, deleteMyPlace } from "../api/placeAPI"; // 백엔드 연결 시 주석 해제, 아래 더미 블록 삭제
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../pages_CSS/MyPlaces.css";
 
-// ✅ 더미데이터 - 백엔드 연결 시 삭제
+// 임시 더미데이터
 const DUMMY_PLACES = [
   {
     id: 1,
@@ -29,13 +30,12 @@ function MyPlaces() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 백엔드 연결 시 아래 더미 블록 삭제하고 주석 해제
+    // 백엔드 연결 시 아래로 교체
     // getMyPlaces()
     //   .then((res) => setPlaces(res.data))
     //   .catch((err) => console.error(err))
     //   .finally(() => setLoading(false));
 
-    // ✅ 더미데이터 (백엔드 연결 시 삭제)
     setTimeout(() => {
       setPlaces(DUMMY_PLACES);
       setLoading(false);
@@ -45,12 +45,11 @@ function MyPlaces() {
   const handleDelete = (id) => {
     if (!window.confirm("찜 목록에서 삭제하시겠습니까?")) return;
 
-    // 백엔드 연결 시 아래 더미 블록 삭제하고 주석 해제
+    // 백엔드 연결 시 아래로 교체
     // deleteMyPlace(id)
     //   .then(() => setPlaces((prev) => prev.filter((p) => p.id !== id)))
     //   .catch((err) => console.error(err));
 
-    // ✅ 더미 삭제 (백엔드 연결 시 삭제)
     setPlaces((prev) => prev.filter((p) => p.id !== id));
   };
 
@@ -93,9 +92,7 @@ function MyPlaces() {
         )}
       </section>
 
-      <footer className="footer">
-        © 2025 PLACED | <a href="#">이용약관</a> | <a href="#">개인정보처리방침</a>
-      </footer>
+      <Footer />
     </div>
   );
 }
