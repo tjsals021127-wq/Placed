@@ -1,30 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { searchKeyword } from "../api/searchAPI";
 import "../pages_CSS/SearchResults.css";
 
 function SearchResults() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const keyword = searchParams.get("keyword") || "";
-  
-  const [results, setResults] = useState([
-    { 
-      id: 1, 
-      name: "장소 A", 
-      address: "서울 강남구 역삼동", 
-      reliability: 92, 
-      img: "https://t4.ftcdn.net/jpg/16/79/44/21/240_F_1679442196_OEsi0AFKie6hYMBpvmXwwRgRYGV4U6Lz.jpg" 
-    },
-    { 
-      id: 2, 
-      name: "장소 B", 
-      address: "서울 마포구 연남동", 
-      reliability: 88, 
-      img: "https://t4.ftcdn.net/jpg/16/79/44/21/240_F_1679442196_OEsi0AFKie6hYMBpvmXwwRgRYGV4U6Lz.jpg" 
-    }
-  ]);
+
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!keyword) return;
+
+    setLoading(true);
+    setError(null);
+
+    searchKeyword(keyword)
+      .then((res) => {
+        setResults(res.data);
+      })
+      .catch(() => {
+        setError("검색 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [keyword]);
 
   return (
     <div className="search-results-page">
@@ -36,14 +42,33 @@ function SearchResults() {
           <p className="keyword-info">"{keyword}"에 대한 검색 결과입니다.</p>
         </div>
 
-        {results.length > 0 ? (
+        {loading ? (
+          <div className="no-result-wrapper">
+            <div className="empty-box">
+              <p>검색 중입니다...</p>
+            </div>
+          </div>
+        ) : error ? (
+          <div className="no-result-wrapper">
+            <div className="empty-box">
+              <p>{error}</p>
+              <button className="back-btn" onClick={() => navigate("/main")}>
+                메인으로 돌아가기
+              </button>
+            </div>
+          </div>
+        ) : results.length > 0 ? (
           <div className="results-list-wrapper">
             <p className="ai-notice-text">"{keyword}"에 대한 <strong>AI 분석 완료</strong> 리스트입니다.</p>
             <div className="results-grid">
               {results.map((item) => (
                 <div key={item.id} className="result-card" onClick={() => navigate(`/place/${item.id}`)}>
                   <div className="card-img-box">
-                    <img src={item.img} alt={item.name} className="result-img" />
+                    <img
+                      src={item.images?.[0] || "/no_result_icon.png"}
+                      alt={item.name}
+                      className="result-img"
+                    />
                   </div>
                   <div className="card-info-box">
                     <div className="card-title-line">
@@ -51,7 +76,6 @@ function SearchResults() {
                       <span className="ai-status-badge">AI 분석 완료</span>
                     </div>
                     <p className="card-address">주소 : {item.address}</p>
-                    <p className="card-trust-value">신뢰도 {item.reliability}%</p>
                   </div>
                 </div>
               ))}
