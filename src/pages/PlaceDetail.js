@@ -25,7 +25,7 @@ function ImageSlider({ images }) {
       <img
         src={images[current]}
         alt={`슬라이드 ${current + 1}`}
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        style={{ width: "100%", height: "100%", objectFit: "contain", background: "#f0f0f0" }}
       />
       <button onClick={prev} style={{
         position: "absolute", left: "10px", top: "50%", transform: "translateY(-50%)",
