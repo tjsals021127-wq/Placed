@@ -58,6 +58,17 @@ function PlaceDetail() {
   const [placeData, setPlaceData] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showDescModal, setShowDescModal] = useState(false);
+
+  const parseDescription = (text) => {
+    if (!text) return [];
+    const parts = text.split(/(?=\[)/).filter(p => p.trim());
+    return parts.map(part => {
+      const match = part.match(/^\[([^\]]+)\]([\s\S]*)/);
+      if (match) return { title: match[1].trim(), content: match[2].trim() };
+      return { title: '', content: part.trim() };
+    });
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -97,13 +108,15 @@ function PlaceDetail() {
 
   if (loading) return <div className="loading-box">데이터 분석 중...</div>;
 
-  const reliability = placeData.reliability ?? 85;
-  const reviewCount = placeData.reviewCount ?? 152;
-  const analysis = placeData.analysis ?? [
-    { id: 1, type: 'positive', text: '실제 방문자들의 긍정적인 반응이 많습니다.' },
-    { id: 2, type: 'positive', text: '광고성 키워드 비중이 낮아 신뢰할 수 있습니다.' },
-    { id: 3, type: 'warning', text: '최근 리뷰 중 일부 서비스 불만이 감지되었습니다.' },
-  ];
+  const reliability = placeData.non_ad_probability ?? 85;
+  const reviewCount = reviews.length;
+  const analysis = placeData.ai_filtering_reason
+    ? [{ id: 1, type: 'positive', text: placeData.ai_filtering_reason }]
+    : [
+        { id: 1, type: 'positive', text: '실제 방문자들의 긍정적인 반응이 많습니다.' },
+        { id: 2, type: 'positive', text: '광고성 키워드 비중이 낮아 신뢰할 수 있습니다.' },
+        { id: 3, type: 'warning', text: '최근 리뷰 중 일부 서비스 불만이 감지되었습니다.' },
+      ];
 
   return (
     <div className="place-detail-page">
@@ -119,7 +132,14 @@ function PlaceDetail() {
               </button>
             </div>
             <p className="addr">주소 : {placeData.address}</p>
-            <p className="desc">{placeData.description}</p>
+            <div className="desc" style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '6px' }}>
+              {parseDescription(placeData.description).map((block, i) => (
+                <div key={i} style={{ marginBottom: '12px', borderBottom: '1px solid #f0f0f0', paddingBottom: '10px' }}>
+                  {block.title && <p style={{ fontWeight: 600, fontSize: '0.85rem', color: '#555', marginBottom: '4px' }}>[{block.title}]</p>}
+                  <p style={{ fontSize: '0.9rem', lineHeight: '1.6', color: '#333', margin: 0 }}>{block.content}</p>
+                </div>
+              ))}
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6px', marginTop: '16px', flexWrap: 'nowrap' }}>
               {Array.from({ length: 5 }, (_, i) => (
