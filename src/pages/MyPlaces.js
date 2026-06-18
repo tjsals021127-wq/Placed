@@ -9,17 +9,17 @@ import "../pages_CSS/MyPlaces.css";
 const DUMMY_PLACES = [
   {
     id: 1,
-    place_name: "성심당 본점",
+    place_name: "성심당 본점 (더미)",
     address: "대전 중구 대종로 480번길 15",
   },
   {
     id: 2,
-    place_name: "카페 온도",
+    place_name: "카페 온도 (더미)",
     address: "대전 유성구 궁동 456-1",
   },
   {
     id: 3,
-    place_name: "대전 엑스포 과학공원",
+    place_name: "대전 엑스포 과학공원 (더미)",
     address: "대전 유성구 대덕대로 480",
   },
 ];

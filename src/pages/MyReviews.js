@@ -8,21 +8,21 @@ import "../pages_CSS/MyReviews.css";
 const DUMMY_REVIEWS = [
   {
     id: 1,
-    place_name: "성심당 본점",
+    place_name: "성심당 본점 (더미)",
     rating: 5,
     content: "튀김소보로가 정말 맛있어요! 줄 서서 먹을 가치 있음",
     created_at: "2025-03-15",
   },
   {
     id: 2,
-    place_name: "카페 온도",
+    place_name: "카페 온도 (더미)",
     rating: 4,
     content: "분위기 너무 좋고 커피도 맛있어요. 주말엔 웨이팅 있음",
     created_at: "2025-04-02",
   },
   {
     id: 3,
-    place_name: "대전 엑스포 과학공원",
+    place_name: "대전 엑스포 과학공원 (더미)",
     rating: 3,
     content: "넓고 볼거리는 많은데 일부 시설이 오래됐어요",
     created_at: "2025-04-20",

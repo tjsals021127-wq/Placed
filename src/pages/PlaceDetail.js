@@ -108,14 +108,14 @@ function PlaceDetail() {
 
   if (loading) return <div className="loading-box">데이터 분석 중...</div>;
 
-  const reliability = placeData.non_ad_probability ?? 85;
+  const reliability = placeData.non_ad_probability ?? "85 (더미)";
   const reviewCount = reviews.length;
   const analysis = placeData.ai_filtering_reason
     ? [{ id: 1, type: 'positive', text: placeData.ai_filtering_reason }]
     : [
-        { id: 1, type: 'positive', text: '실제 방문자들의 긍정적인 반응이 많습니다.' },
-        { id: 2, type: 'positive', text: '광고성 키워드 비중이 낮아 신뢰할 수 있습니다.' },
-        { id: 3, type: 'warning', text: '최근 리뷰 중 일부 서비스 불만이 감지되었습니다.' },
+        { id: 1, type: 'positive', text: '실제 방문자들의 긍정적인 반응이 많습니다. (더미)' },
+        { id: 2, type: 'positive', text: '광고성 키워드 비중이 낮아 신뢰할 수 있습니다. (더미)' },
+        { id: 3, type: 'warning', text: '최근 리뷰 중 일부 서비스 불만이 감지되었습니다. (더미)' },
       ];
 
   return (
@@ -146,7 +146,7 @@ function PlaceDetail() {
                 <span key={i} style={{ color: i < Math.round(avgRating) ? '#ffc107' : '#ddd', fontSize: '1.1rem', lineHeight: 1 }}>★</span>
               ))}
               <span style={{ fontWeight: 700, color: '#2a7fff', fontSize: '1.1rem' }}>{avgRating}</span>
-              <span style={{ color: '#aaa', fontSize: '0.9rem' }}>({reviews.length}명)</span>
+              <span style={{ color: '#aaa', fontSize: '0.9rem' }}>({reviews.length}명) (더미)</span>
             </div>
           </div>
         </section>

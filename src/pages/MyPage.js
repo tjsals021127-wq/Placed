@@ -8,8 +8,8 @@ function MyPage() {
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState({
-    name: "사용자",
-    email: "user@example.com",
+    name: "사용자 (더미)",
+    email: "user@example.com (더미)",
     newPassword: "",
     confirmPassword: "",
   });
