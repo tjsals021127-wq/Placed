@@ -22,4 +22,5 @@ export const API_ROUTES = {
 
 
   SEARCH: "/api/search",
+  SEARCH_ELASTIC: "/api/search/elastic/",
 };
